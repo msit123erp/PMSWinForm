@@ -33,8 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +57,430 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm_Insert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm_Insert.Designer.cs">
+      <DependentUpon>BuyerAccountForm_Insert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm_Update.Designer.cs">
+      <DependentUpon>BuyerAccountForm_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dao\BuyerReportDao.cs" />
+    <Compile Include="Dao\CompanyInfoDao.cs" />
+    <Compile Include="Dao\EmployeeDao.cs" />
+    <Compile Include="Dao\OrderChangedDao.cs" />
+    <Compile Include="Dao\OrderDao.cs" />
+    <Compile Include="Dao\OrderPartDao.cs" />
+    <Compile Include="Dao\PartDao.cs" />
+    <Compile Include="Dao\PurchasingOrderDetailDao.cs" />
+    <Compile Include="Dao\SourceListDao.cs" />
+    <Compile Include="Dao\SourceOrderListDao.cs" />
+    <Compile Include="Dao\SupplierPersonAccountDao.cs" />
+    <Compile Include="Dao\SupplierReportDao.cs" />
+    <Compile Include="DataSource\PurchasingOrderDetail.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PurchasingOrderDetail.cs" />
+    <Compile Include="Order\CheckOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\CheckOrderForm.Designer.cs">
+      <DependentUpon>CheckOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\NewOrderCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\NewOrderCheckForm.Designer.cs">
+      <DependentUpon>NewOrderCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\NewOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\NewOrderForm.Designer.cs">
+      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderUtility.cs" />
+    <Compile Include="Order\SendOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\SendOrderForm.Designer.cs">
+      <DependentUpon>SendOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Part\ModiflyPartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Part\ModiflyPartForm.Designer.cs">
+      <DependentUpon>ModiflyPartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Part\UpDatePartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Part\UpDatePartForm.Designer.cs">
+      <DependentUpon>UpDatePartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\BuyerPersonAccountForm_ChangePwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\BuyerPersonAccountForm_ChangePwd.designer.cs">
+      <DependentUpon>BuyerPersonAccountForm_ChangePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\CompanyInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\CompanyInfoForm.designer.cs">
+      <DependentUpon>CompanyInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierCompanyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierCompanyForm.Designer.cs">
+      <DependentUpon>SupplierCompanyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierPersonAccountForm_ChangPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierPersonAccountForm_ChangPwd.Designer.cs">
+      <DependentUpon>SupplierPersonAccountForm_ChangPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingOrder\PartDao.cs" />
+    <Compile Include="PurchasingOrder\PartUnitDao.cs" />
+    <Compile Include="Dao\PurchasingOrderDao.cs" />
+    <Compile Include="Dao\SupplierAccountDao.cs" />
+    <Compile Include="Dao\SupplierInfoDao.cs" />
+    <Compile Include="Dao\SupplierRatingDao.cs" />
+    <Compile Include="DataSource\Buyer.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyerAccount\BuyerAccountForm.Designer.cs">
+      <DependentUpon>BuyerAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common.cs" />
+    <Compile Include="DataSource\CompanyInfo.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dao\BuyerDao.cs" />
+    <Compile Include="DataSource\Employee.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login\BuyerLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\BuyerLoginForm.Designer.cs">
+      <DependentUpon>BuyerLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\BuyerLoginService.cs" />
+    <Compile Include="BuyerAccount\CreateBuyerService.cs" />
+    <Compile Include="PurchasingOrder\POAddMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingOrder\POAddMainForm.Designer.cs">
+      <DependentUpon>POAddMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingOrder\POSetQtyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingOrder\POSetQtyForm.Designer.cs">
+      <DependentUpon>POSetQtyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingOrder\POPickupPartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingOrder\POPickupPartForm.Designer.cs">
+      <DependentUpon>POPickupPartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingOrder\PurchasingOrderUtil.cs" />
+    <Compile Include="PurchasingOrder\SourceListDao.cs" />
+    <Compile Include="SourceList\AddSourceListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceList\AddSourceListForm.Designer.cs">
+      <DependentUpon>AddSourceListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SourceList\UpdateSourceListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceList\UpdateSourceListForm.Designer.cs">
+      <DependentUpon>UpdateSourceListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAccount\CreateSupplierAccountService.cs" />
+    <Compile Include="Login\LoginBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginBaseForm.Designer.cs">
+      <DependentUpon>LoginBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\ResetPassowordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\ResetPassowordForm.Designer.cs">
+      <DependentUpon>ResetPassowordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SupplierLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\SupplierLoginForm.Designer.cs">
+      <DependentUpon>SupplierLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SupplierLoginService.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Buyer.cs" />
+    <Compile Include="Model\CompanyInfo.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderChanged.cs" />
+    <Compile Include="Model\OrderChangedCategory.cs" />
+    <Compile Include="Model\OrderPart.cs" />
+    <Compile Include="Model\Part.cs" />
+    <Compile Include="Model\PartUnit.cs" />
+    <Compile Include="Model\PurchasingOrder.cs" />
+    <Compile Include="Model\SourceList.cs" />
+    <Compile Include="Model\SourceOrderList.cs" />
+    <Compile Include="Model\SupplierAccount.cs" />
+    <Compile Include="Model\SupplierInfo.cs" />
+    <Compile Include="Model\SupplierRating.cs" />
+    <Compile Include="DataSource\Order.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\OrderChanged.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\OrderChangedCategory.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\OrderPart.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\Part.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\PartUnit.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Part\PartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Part\PartForm.Designer.cs">
+      <DependentUpon>PartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\BuyerPersonAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\BuyerPersonAccountForm.Designer.cs">
+      <DependentUpon>BuyerPersonAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierPersonAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonAccount\SupplierPersonAccountForm.Designer.cs">
+      <DependentUpon>SupplierPersonAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\PMSDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMSDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\PMSEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMSEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\PMSEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\PMSEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMSEntityModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataSource\PurchasingOrder.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingOrder\PurchasingOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingOrder\PurchasingOrderForm.Designer.cs">
+      <DependentUpon>PurchasingOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\BuyerReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\BuyerReportForm.Designer.cs">
+      <DependentUpon>BuyerReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\SupplierReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\SupplierReportForm.Designer.cs">
+      <DependentUpon>SupplierReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\SourceList.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SourceList\SourceListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceList\SourceListForm.Designer.cs">
+      <DependentUpon>SourceListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\SourceOrderList.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="DataSource\SupplierAccount.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlTransactions.cs" />
+    <Compile Include="SupplierAccount\CreateSupplierService.cs" />
+    <Compile Include="SupplierAccount\SupplierAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAccount\SupplierAccountForm.Designer.cs">
+      <DependentUpon>SupplierAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\SupplierInfo.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAccount\SupplierAccountForm_Insert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAccount\SupplierAccountForm_Insert.Designer.cs">
+      <DependentUpon>SupplierAccountForm_Insert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAccount\SupplierAccountForm_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAccount\SupplierAccountForm_Update.Designer.cs">
+      <DependentUpon>SupplierAccountForm_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoForm.Designer.cs">
+      <DependentUpon>SupplierInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSource\SupplierRating.cs">
+      <DependentUpon>PMSEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoFormCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoFormCreate.Designer.cs">
+      <DependentUpon>SupplierInfoFormCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoFormUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierInfo\SupplierInfoFormUpdate.Designer.cs">
+      <DependentUpon>SupplierInfoFormUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
+    <Compile Include="UtilWinForm.cs" />
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyerAccount\BuyerAccountForm.resx">
+      <DependentUpon>BuyerAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyerAccount\BuyerAccountForm_Insert.resx">
+      <DependentUpon>BuyerAccountForm_Insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyerAccount\BuyerAccountForm_Update.resx">
+      <DependentUpon>BuyerAccountForm_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\BuyerLoginForm.resx">
+      <DependentUpon>BuyerLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\LoginBaseForm.resx">
+      <DependentUpon>LoginBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\ResetPassowordForm.resx">
+      <DependentUpon>ResetPassowordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\SupplierLoginForm.resx">
+      <DependentUpon>SupplierLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\CheckOrderForm.resx">
+      <DependentUpon>CheckOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\NewOrderCheckForm.resx">
+      <DependentUpon>NewOrderCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\NewOrderForm.resx">
+      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\SendOrderForm.resx">
+      <DependentUpon>SendOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Part\ModiflyPartForm.resx">
+      <DependentUpon>ModiflyPartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Part\PartForm.resx">
+      <DependentUpon>PartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Part\UpDatePartForm.resx">
+      <DependentUpon>UpDatePartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\BuyerPersonAccountForm.resx">
+      <DependentUpon>BuyerPersonAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\BuyerPersonAccountForm_ChangePwd.resx">
+      <DependentUpon>BuyerPersonAccountForm_ChangePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\CompanyInfoForm.resx">
+      <DependentUpon>CompanyInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\SupplierCompanyForm.resx">
+      <DependentUpon>SupplierCompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\SupplierPersonAccountForm.resx">
+      <DependentUpon>SupplierPersonAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonAccount\SupplierPersonAccountForm_ChangPwd.resx">
+      <DependentUpon>SupplierPersonAccountForm_ChangPwd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +490,70 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PurchasingOrder\POAddMainForm.resx">
+      <DependentUpon>POAddMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingOrder\POSetQtyForm.resx">
+      <DependentUpon>POSetQtyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingOrder\PurchasingOrderForm.resx">
+      <DependentUpon>PurchasingOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingOrder\POPickupPartForm.resx">
+      <DependentUpon>POPickupPartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\BuyerReportForm.resx">
+      <DependentUpon>BuyerReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\SupplierReportForm.resx">
+      <DependentUpon>SupplierReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceList\AddSourceListForm.resx">
+      <DependentUpon>AddSourceListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceList\SourceListForm.resx">
+      <DependentUpon>SourceListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceList\UpdateSourceListForm.resx">
+      <DependentUpon>UpdateSourceListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAccount\SupplierAccountForm.resx">
+      <DependentUpon>SupplierAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAccount\SupplierAccountForm_Insert.resx">
+      <DependentUpon>SupplierAccountForm_Insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAccount\SupplierAccountForm_Update.resx">
+      <DependentUpon>SupplierAccountForm_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierInfo\SupplierInfoForm.resx">
+      <DependentUpon>SupplierInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierInfo\SupplierInfoFormCreate.resx">
+      <DependentUpon>SupplierInfoFormCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierInfo\SupplierInfoFormUpdate.resx">
+      <DependentUpon>SupplierInfoFormUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <EntityDeploy Include="DataSource\PMSEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PMSEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataSource\PMSDataSet.xsc">
+      <DependentUpon>PMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSource\PMSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PMSDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSource\PMSDataSet.xss">
+      <DependentUpon>PMSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSource\PMSEntityModel.edmx.diagram">
+      <DependentUpon>PMSEntityModel.edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +566,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataSource\PMSEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PMSEntityModel.edmx</DependentUpon>
+      <LastGenOutput>PMSEntityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSource\PMSEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PMSEntityModel.edmx</DependentUpon>
+      <LastGenOutput>PMSEntityModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="images\D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\personIfo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\R.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\send.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\setting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

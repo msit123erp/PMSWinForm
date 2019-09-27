@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="abc689b195f24dbf926c529c64ef3c8d" Name="Diagram1">
+        <EntityTypeShape EntityType="PMSModel.Buyer" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.CompanyInfo" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.Employee" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.Order" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.OrderChanged" Width="1.5" PointX="12.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.OrderChangedCategory" Width="1.5" PointX="10.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.OrderPart" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.Part" Width="1.5" PointX="13.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.PartUnit" Width="1.5" PointX="11.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.PurchasingOrder" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.SourceList" Width="1.5" PointX="15.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.SourceOrderList" Width="1.5" PointX="12" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.SupplierAccount" Width="1.5" PointX="10.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.SupplierInfo" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.SupplierRating" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="PMSModel.FK_Buyer_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Order_Buyer" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_PurchasingOrder_Buyer" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SupplierAccount_Buyer" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Employee_CompanyInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Order_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_PurchasingOrder_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SupplierAccount_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Order_PurchasingOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Order_SupplierAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Order_SupplierInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_OrderChanged_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_OrderPart_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_OrderChanged_OrderChangedCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SourceOrderList_OrderPart" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Part_PartUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_Part_SupplierInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SourceList_Part" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SupplierAccount_SupplierInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="PMSModel.FK_SupplierInfo_SupplierRating" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PMSModel.PurchasingOrderDetail" Width="1.5" PointX="12.75" PointY="15" />
+        <AssociationConnector Association="PMSModel.FK_PurchasingOrderDetail_PurchasingOrder" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

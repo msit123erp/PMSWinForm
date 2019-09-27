@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Buyer">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="BuyerOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="68" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccountStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="BSendLetterState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="BSendLetterDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Buyer_Employee" FromRole="Buyer" ToRole="Employee" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Buyer" FromRole="Buyer" ToRole="Order" />
+    <NavigationProperty Name="PurchasingOrders" Relationship="Self.FK_PurchasingOrder_Buyer" FromRole="Buyer" ToRole="PurchasingOrder" />
+    <NavigationProperty Name="SupplierAccounts" Relationship="Self.FK_SupplierAccount_Buyer" FromRole="Buyer" ToRole="SupplierAccount" />
+  </EntityType>
+  <EntityType Name="CompanyInfo">
+    <Key>
+      <PropertyRef Name="CompanyCode" />
+    </Key>
+    <Property Name="CompanyInfoOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_CompanyInfo" FromRole="CompanyInfo" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Buyer" Relationship="Self.FK_Buyer_Employee" FromRole="Employee" ToRole="Buyer" />
+    <NavigationProperty Name="CompanyInfo" Relationship="Self.FK_Employee_CompanyInfo" FromRole="Employee" ToRole="CompanyInfo" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+    <NavigationProperty Name="PurchasingOrders" Relationship="Self.FK_PurchasingOrder_Employee" FromRole="Employee" ToRole="PurchasingOrder" />
+    <NavigationProperty Name="SupplierAccounts" Relationship="Self.FK_SupplierAccount_Employee" FromRole="Employee" ToRole="SupplierAccount" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PurchasingOrderID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SupplierAccountID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateRequired" Type="DateTime" Precision="3" />
+    <Property Name="DateReleased" Type="DateTime" Precision="3" />
+    <Property Name="ReceiverName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverTel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiverMobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ReceiptAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Buyer" Relationship="Self.FK_Order_Buyer" FromRole="Order" ToRole="Buyer" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="PurchasingOrder" Relationship="Self.FK_Order_PurchasingOrder" FromRole="Order" ToRole="PurchasingOrder" />
+    <NavigationProperty Name="SupplierAccount" Relationship="Self.FK_Order_SupplierAccount" FromRole="Order" ToRole="SupplierAccount" />
+    <NavigationProperty Name="SupplierInfo" Relationship="Self.FK_Order_SupplierInfo" FromRole="Order" ToRole="SupplierInfo" />
+    <NavigationProperty Name="OrderChangeds" Relationship="Self.FK_OrderChanged_Order" FromRole="Order" ToRole="OrderChanged" />
+    <NavigationProperty Name="OrderParts" Relationship="Self.FK_OrderPart_Order" FromRole="Order" ToRole="OrderPart" />
+  </EntityType>
+  <EntityType Name="OrderChanged">
+    <Key>
+      <PropertyRef Name="OrderChangedOID" />
+    </Key>
+    <Property Name="OrderChangedOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderChangedCategoryCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RequesterRole" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RequesterID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderChanged_Order" FromRole="OrderChanged" ToRole="Order" />
+    <NavigationProperty Name="OrderChangedCategory" Relationship="Self.FK_OrderChanged_OrderChangedCategory" FromRole="OrderChanged" ToRole="OrderChangedCategory" />
+  </EntityType>
+  <EntityType Name="OrderChangedCategory">
+    <Key>
+      <PropertyRef Name="OrderChangedCategoryCode" />
+    </Key>
+    <Property Name="OrderChangedCategoryCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChangeReson" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderChangeds" Relationship="Self.FK_OrderChanged_OrderChangedCategory" FromRole="OrderChangedCategory" ToRole="OrderChanged" />
+  </EntityType>
+  <EntityType Name="OrderPart">
+    <Key>
+      <PropertyRef Name="OrderPartOID" />
+    </Key>
+    <Property Name="OrderPartOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartSpec" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PartUnitName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderPart_Order" FromRole="OrderPart" ToRole="Order" />
+    <NavigationProperty Name="SourceOrderLists" Relationship="Self.FK_SourceOrderList_OrderPart" FromRole="OrderPart" ToRole="SourceOrderList" />
+  </EntityType>
+  <EntityType Name="Part">
+    <Key>
+      <PropertyRef Name="PartNumber" />
+    </Key>
+    <Property Name="PartOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartSpec" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartUnitOID" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PictureAdress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PictureDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PartUnit" Relationship="Self.FK_Part_PartUnit" FromRole="Part" ToRole="PartUnit" />
+    <NavigationProperty Name="SupplierInfo" Relationship="Self.FK_Part_SupplierInfo" FromRole="Part" ToRole="SupplierInfo" />
+    <NavigationProperty Name="SourceLists" Relationship="Self.FK_SourceList_Part" FromRole="Part" ToRole="SourceList" />
+  </EntityType>
+  <EntityType Name="PartUnit">
+    <Key>
+      <PropertyRef Name="PartUnitOID" />
+    </Key>
+    <Property Name="PartUnitOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartUnitName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Parts" Relationship="Self.FK_Part_PartUnit" FromRole="PartUnit" ToRole="Part" />
+  </EntityType>
+  <EntityType Name="PurchasingOrder">
+    <Key>
+      <PropertyRef Name="PurchasingOrderID" />
+    </Key>
+    <Property Name="PurchasingOrderOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchasingOrderID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POBeginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Buyer" Relationship="Self.FK_PurchasingOrder_Buyer" FromRole="PurchasingOrder" ToRole="Buyer" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_PurchasingOrder_Employee" FromRole="PurchasingOrder" ToRole="Employee" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_PurchasingOrder" FromRole="PurchasingOrder" ToRole="Order" />
+    <NavigationProperty Name="PurchasingOrderDetails" Relationship="PMSModel.FK_PurchasingOrderDetail_PurchasingOrder" FromRole="PurchasingOrder" ToRole="PurchasingOrderDetail" />
+  </EntityType>
+  <EntityType Name="SourceList">
+    <Key>
+      <PropertyRef Name="SourceListOID" />
+    </Key>
+    <Property Name="SourceListOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Batch" Type="Int32" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="DiscountBeginDate" Type="DateTime" Precision="3" />
+    <Property Name="DiscountEndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Part" Relationship="Self.FK_SourceList_Part" FromRole="SourceList" ToRole="Part" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SourceOrderList">
+    <Key>
+      <PropertyRef Name="SourceOrderListOID" />
+    </Key>
+    <Property Name="SourceOrderListOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderPartOID" Type="Int32" Nullable="false" />
+    <Property Name="Batch" Type="Int32" Nullable="false" />
+    <Property Name="Discount" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderPart" Relationship="Self.FK_SourceOrderList_OrderPart" FromRole="SourceOrderList" ToRole="OrderPart" />
+    <Property Name="PurchasingOrderDetailListOID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SupplierAccount">
+    <Key>
+      <PropertyRef Name="SupplierAccountID" />
+    </Key>
+    <Property Name="SupplierAccountOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierAccountID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="68" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatorEmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SASendLetterState" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SASendLetterDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Buyer" Relationship="Self.FK_SupplierAccount_Buyer" FromRole="SupplierAccount" ToRole="Buyer" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_SupplierAccount_Employee" FromRole="SupplierAccount" ToRole="Employee" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_SupplierAccount" FromRole="SupplierAccount" ToRole="Order" />
+    <NavigationProperty Name="SupplierInfo" Relationship="Self.FK_SupplierAccount_SupplierInfo" FromRole="SupplierAccount" ToRole="SupplierInfo" />
+  </EntityType>
+  <EntityType Name="SupplierInfo">
+    <Key>
+      <PropertyRef Name="SupplierCode" />
+    </Key>
+    <Property Name="SupplierInfoOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SupplierName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaxID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SupplierRatingOID" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_SupplierInfo" FromRole="SupplierInfo" ToRole="Order" />
+    <NavigationProperty Name="Parts" Relationship="Self.FK_Part_SupplierInfo" FromRole="SupplierInfo" ToRole="Part" />
+    <NavigationProperty Name="SupplierAccounts" Relationship="Self.FK_SupplierAccount_SupplierInfo" FromRole="SupplierInfo" ToRole="SupplierAccount" />
+    <NavigationProperty Name="SupplierRating" Relationship="Self.FK_SupplierInfo_SupplierRating" FromRole="SupplierInfo" ToRole="SupplierRating" />
+  </EntityType>
+  <EntityType Name="SupplierRating">
+    <Key>
+      <PropertyRef Name="SupplierRatingOID" />
+    </Key>
+    <Property Name="SupplierRatingOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RatingName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SupplierInfoes" Relationship="Self.FK_SupplierInfo_SupplierRating" FromRole="SupplierRating" ToRole="SupplierInfo" />
+  </EntityType>
+  <Association Name="FK_Buyer_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Buyer">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Buyer">
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchasingOrder_Buyer">
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+    <End Role="PurchasingOrder" Type="Self.PurchasingOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="PurchasingOrder">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierAccount_Buyer">
+    <End Role="Buyer" Type="Self.Buyer" Multiplicity="1" />
+    <End Role="SupplierAccount" Type="Self.SupplierAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="SupplierAccount">
+        <PropertyRef Name="CreatorEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_CompanyInfo">
+    <End Role="CompanyInfo" Type="Self.CompanyInfo" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyInfo">
+        <PropertyRef Name="CompanyCode" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CompanyCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchasingOrder_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="PurchasingOrder" Type="Self.PurchasingOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="PurchasingOrder">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierAccount_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="SupplierAccount" Type="Self.SupplierAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="SupplierAccount">
+        <PropertyRef Name="CreatorEmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_PurchasingOrder">
+    <End Role="PurchasingOrder" Type="Self.PurchasingOrder" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchasingOrder">
+        <PropertyRef Name="PurchasingOrderID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PurchasingOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_SupplierAccount">
+    <End Role="SupplierAccount" Type="Self.SupplierAccount" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierAccount">
+        <PropertyRef Name="SupplierAccountID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SupplierAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_SupplierInfo">
+    <End Role="SupplierInfo" Type="Self.SupplierInfo" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierInfo">
+        <PropertyRef Name="SupplierCode" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SupplierCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderChanged_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderChanged" Type="Self.OrderChanged" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderChanged">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPart_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderPart" Type="Self.OrderPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderPart">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderChanged_OrderChangedCategory">
+    <End Role="OrderChangedCategory" Type="Self.OrderChangedCategory" Multiplicity="1" />
+    <End Role="OrderChanged" Type="Self.OrderChanged" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderChangedCategory">
+        <PropertyRef Name="OrderChangedCategoryCode" />
+      </Principal>
+      <Dependent Role="OrderChanged">
+        <PropertyRef Name="OrderChangedCategoryCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SourceOrderList_OrderPart">
+    <End Role="OrderPart" Type="Self.OrderPart" Multiplicity="1" />
+    <End Role="SourceOrderList" Type="Self.SourceOrderList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderPart">
+        <PropertyRef Name="OrderPartOID" />
+      </Principal>
+      <Dependent Role="SourceOrderList">
+        <PropertyRef Name="OrderPartOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Part_PartUnit">
+    <End Role="PartUnit" Type="Self.PartUnit" Multiplicity="1" />
+    <End Role="Part" Type="Self.Part" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartUnit">
+        <PropertyRef Name="PartUnitOID" />
+      </Principal>
+      <Dependent Role="Part">
+        <PropertyRef Name="PartUnitOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Part_SupplierInfo">
+    <End Role="SupplierInfo" Type="Self.SupplierInfo" Multiplicity="1" />
+    <End Role="Part" Type="Self.Part" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierInfo">
+        <PropertyRef Name="SupplierCode" />
+      </Principal>
+      <Dependent Role="Part">
+        <PropertyRef Name="SupplierCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SourceList_Part">
+    <End Role="Part" Type="Self.Part" Multiplicity="1" />
+    <End Role="SourceList" Type="Self.SourceList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part">
+        <PropertyRef Name="PartNumber" />
+      </Principal>
+      <Dependent Role="SourceList">
+        <PropertyRef Name="PartNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierAccount_SupplierInfo">
+    <End Role="SupplierInfo" Type="Self.SupplierInfo" Multiplicity="1" />
+    <End Role="SupplierAccount" Type="Self.SupplierAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierInfo">
+        <PropertyRef Name="SupplierCode" />
+      </Principal>
+      <Dependent Role="SupplierAccount">
+        <PropertyRef Name="SupplierCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplierInfo_SupplierRating">
+    <End Role="SupplierRating" Type="Self.SupplierRating" Multiplicity="0..1" />
+    <End Role="SupplierInfo" Type="Self.SupplierInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierRating">
+        <PropertyRef Name="SupplierRatingOID" />
+      </Principal>
+      <Dependent Role="SupplierInfo">
+        <PropertyRef Name="SupplierRatingOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buyers" EntityType="Self.Buyer" />
+    <EntitySet Name="CompanyInfoes" EntityType="Self.CompanyInfo" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderChangeds" EntityType="Self.OrderChanged" />
+    <EntitySet Name="OrderChangedCategories" EntityType="Self.OrderChangedCategory" />
+    <EntitySet Name="OrderParts" EntityType="Self.OrderPart" />
+    <EntitySet Name="Parts" EntityType="Self.Part" />
+    <EntitySet Name="PartUnits" EntityType="Self.PartUnit" />
+    <EntitySet Name="PurchasingOrders" EntityType="Self.PurchasingOrder" />
+    <EntitySet Name="SourceLists" EntityType="Self.SourceList" />
+    <EntitySet Name="SourceOrderLists" EntityType="Self.SourceOrderList" />
+    <EntitySet Name="SupplierAccounts" EntityType="Self.SupplierAccount" />
+    <EntitySet Name="SupplierInfoes" EntityType="Self.SupplierInfo" />
+    <EntitySet Name="SupplierRatings" EntityType="Self.SupplierRating" />
+    <AssociationSet Name="FK_Buyer_Employee" Association="Self.FK_Buyer_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Buyer" EntitySet="Buyers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Buyer" Association="Self.FK_Order_Buyer">
+      <End Role="Buyer" EntitySet="Buyers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchasingOrder_Buyer" Association="Self.FK_PurchasingOrder_Buyer">
+      <End Role="Buyer" EntitySet="Buyers" />
+      <End Role="PurchasingOrder" EntitySet="PurchasingOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierAccount_Buyer" Association="Self.FK_SupplierAccount_Buyer">
+      <End Role="Buyer" EntitySet="Buyers" />
+      <End Role="SupplierAccount" EntitySet="SupplierAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_CompanyInfo" Association="Self.FK_Employee_CompanyInfo">
+      <End Role="CompanyInfo" EntitySet="CompanyInfoes" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchasingOrder_Employee" Association="Self.FK_PurchasingOrder_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="PurchasingOrder" EntitySet="PurchasingOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierAccount_Employee" Association="Self.FK_SupplierAccount_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="SupplierAccount" EntitySet="SupplierAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_PurchasingOrder" Association="Self.FK_Order_PurchasingOrder">
+      <End Role="PurchasingOrder" EntitySet="PurchasingOrders" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_SupplierAccount" Association="Self.FK_Order_SupplierAccount">
+      <End Role="SupplierAccount" EntitySet="SupplierAccounts" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_SupplierInfo" Association="Self.FK_Order_SupplierInfo">
+      <End Role="SupplierInfo" EntitySet="SupplierInfoes" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderChanged_Order" Association="Self.FK_OrderChanged_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderChanged" EntitySet="OrderChangeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPart_Order" Association="Self.FK_OrderPart_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderPart" EntitySet="OrderParts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderChanged_OrderChangedCategory" Association="Self.FK_OrderChanged_OrderChangedCategory">
+      <End Role="OrderChangedCategory" EntitySet="OrderChangedCategories" />
+      <End Role="OrderChanged" EntitySet="OrderChangeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SourceOrderList_OrderPart" Association="Self.FK_SourceOrderList_OrderPart">
+      <End Role="OrderPart" EntitySet="OrderParts" />
+      <End Role="SourceOrderList" EntitySet="SourceOrderLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Part_PartUnit" Association="Self.FK_Part_PartUnit">
+      <End Role="PartUnit" EntitySet="PartUnits" />
+      <End Role="Part" EntitySet="Parts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Part_SupplierInfo" Association="Self.FK_Part_SupplierInfo">
+      <End Role="SupplierInfo" EntitySet="SupplierInfoes" />
+      <End Role="Part" EntitySet="Parts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SourceList_Part" Association="Self.FK_SourceList_Part">
+      <End Role="Part" EntitySet="Parts" />
+      <End Role="SourceList" EntitySet="SourceLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierAccount_SupplierInfo" Association="Self.FK_SupplierAccount_SupplierInfo">
+      <End Role="SupplierInfo" EntitySet="SupplierInfoes" />
+      <End Role="SupplierAccount" EntitySet="SupplierAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplierInfo_SupplierRating" Association="Self.FK_SupplierInfo_SupplierRating">
+      <End Role="SupplierRating" EntitySet="SupplierRatings" />
+      <End Role="SupplierInfo" EntitySet="SupplierInfoes" />
+    </AssociationSet>
+    <EntitySet Name="PurchasingOrderDetails" EntityType="PMSModel.PurchasingOrderDetail" />
+    <AssociationSet Name="FK_PurchasingOrderDetail_PurchasingOrder" Association="PMSModel.FK_PurchasingOrderDetail_PurchasingOrder">
+      <End Role="PurchasingOrder" EntitySet="PurchasingOrders" />
+      <End Role="PurchasingOrderDetail" EntitySet="PurchasingOrderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PurchasingOrderDetail">
+    <Key>
+      <PropertyRef Name="PurchasingOrderDetailListOID" />
+    </Key>
+    <Property Name="PurchasingOrderDetailListOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchasingOrderID" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="SourceListOID" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PurchasingOrder" Relationship="PMSModel.FK_PurchasingOrderDetail_PurchasingOrder" FromRole="PurchasingOrderDetail" ToRole="PurchasingOrder" />
+  </EntityType>
+  <Association Name="FK_PurchasingOrderDetail_PurchasingOrder">
+    <End Type="PMSModel.PurchasingOrder" Role="PurchasingOrder" Multiplicity="1" />
+    <End Type="PMSModel.PurchasingOrderDetail" Role="PurchasingOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchasingOrder">
+        <PropertyRef Name="PurchasingOrderID" />
+      </Principal>
+      <Dependent Role="PurchasingOrderDetail">
+        <PropertyRef Name="PurchasingOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

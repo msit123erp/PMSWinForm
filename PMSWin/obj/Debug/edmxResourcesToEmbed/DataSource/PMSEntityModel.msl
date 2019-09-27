@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PMSModelStoreContainer" CdmEntityContainer="PMSEntities">
+    <EntitySetMapping Name="Buyers">
+      <EntityTypeMapping TypeName="PMSModel.Buyer">
+        <MappingFragment StoreEntitySet="Buyer">
+          <ScalarProperty Name="BuyerOID" ColumnName="BuyerOID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="BSendLetterState" ColumnName="BSendLetterState" />
+          <ScalarProperty Name="BSendLetterDate" ColumnName="BSendLetterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyInfoes">
+      <EntityTypeMapping TypeName="PMSModel.CompanyInfo">
+        <MappingFragment StoreEntitySet="CompanyInfo">
+          <ScalarProperty Name="CompanyInfoOID" ColumnName="CompanyInfoOID" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="PMSModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeOID" ColumnName="EmployeeOID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="PMSModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderOID" ColumnName="OrderOID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="PurchasingOrderID" ColumnName="PurchasingOrderID" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="SupplierAccountID" ColumnName="SupplierAccountID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="DateRequired" ColumnName="DateRequired" />
+          <ScalarProperty Name="DateReleased" ColumnName="DateReleased" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="ReceiverTel" ColumnName="ReceiverTel" />
+          <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+          <ScalarProperty Name="ReceiptAddress" ColumnName="ReceiptAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderChangeds">
+      <EntityTypeMapping TypeName="PMSModel.OrderChanged">
+        <MappingFragment StoreEntitySet="OrderChanged">
+          <ScalarProperty Name="OrderChangedOID" ColumnName="OrderChangedOID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderChangedCategoryCode" ColumnName="OrderChangedCategoryCode" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequesterRole" ColumnName="RequesterRole" />
+          <ScalarProperty Name="RequesterID" ColumnName="RequesterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderChangedCategories">
+      <EntityTypeMapping TypeName="PMSModel.OrderChangedCategory">
+        <MappingFragment StoreEntitySet="OrderChangedCategory">
+          <ScalarProperty Name="OrderChangedCategoryCode" ColumnName="OrderChangedCategoryCode" />
+          <ScalarProperty Name="ChangeReson" ColumnName="ChangeReson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderParts">
+      <EntityTypeMapping TypeName="PMSModel.OrderPart">
+        <MappingFragment StoreEntitySet="OrderPart">
+          <ScalarProperty Name="OrderPartOID" ColumnName="OrderPartOID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="PartSpec" ColumnName="PartSpec" />
+          <ScalarProperty Name="PartUnitName" ColumnName="PartUnitName" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts">
+      <EntityTypeMapping TypeName="PMSModel.Part">
+        <MappingFragment StoreEntitySet="Part">
+          <ScalarProperty Name="PartOID" ColumnName="PartOID" />
+          <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="PartSpec" ColumnName="PartSpec" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="PartUnitOID" ColumnName="PartUnitOID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PictureAdress" ColumnName="PictureAdress" />
+          <ScalarProperty Name="PictureDescription" ColumnName="PictureDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartUnits">
+      <EntityTypeMapping TypeName="PMSModel.PartUnit">
+        <MappingFragment StoreEntitySet="PartUnit">
+          <ScalarProperty Name="PartUnitOID" ColumnName="PartUnitOID" />
+          <ScalarProperty Name="PartUnitName" ColumnName="PartUnitName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchasingOrders">
+      <EntityTypeMapping TypeName="PMSModel.PurchasingOrder">
+        <MappingFragment StoreEntitySet="PurchasingOrder">
+          <ScalarProperty Name="PurchasingOrderOID" ColumnName="PurchasingOrderOID" />
+          <ScalarProperty Name="PurchasingOrderID" ColumnName="PurchasingOrderID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="POBeginDate" ColumnName="POBeginDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SourceLists">
+      <EntityTypeMapping TypeName="PMSModel.SourceList">
+        <MappingFragment StoreEntitySet="SourceList">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="SourceListOID" ColumnName="SourceListOID" />
+          <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountBeginDate" ColumnName="DiscountBeginDate" />
+          <ScalarProperty Name="DiscountEndDate" ColumnName="DiscountEndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SourceOrderLists">
+      <EntityTypeMapping TypeName="PMSModel.SourceOrderList">
+        <MappingFragment StoreEntitySet="SourceOrderList">
+          <ScalarProperty Name="PurchasingOrderDetailListOID" ColumnName="PurchasingOrderDetailListOID" />
+          <ScalarProperty Name="SourceOrderListOID" ColumnName="SourceOrderListOID" />
+          <ScalarProperty Name="OrderPartOID" ColumnName="OrderPartOID" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierAccounts">
+      <EntityTypeMapping TypeName="PMSModel.SupplierAccount">
+        <MappingFragment StoreEntitySet="SupplierAccount">
+          <ScalarProperty Name="SupplierAccountOID" ColumnName="SupplierAccountOID" />
+          <ScalarProperty Name="SupplierAccountID" ColumnName="SupplierAccountID" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatorEmployeeID" ColumnName="CreatorEmployeeID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="SASendLetterState" ColumnName="SASendLetterState" />
+          <ScalarProperty Name="SASendLetterDate" ColumnName="SASendLetterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierInfoes">
+      <EntityTypeMapping TypeName="PMSModel.SupplierInfo">
+        <MappingFragment StoreEntitySet="SupplierInfo">
+          <ScalarProperty Name="SupplierInfoOID" ColumnName="SupplierInfoOID" />
+          <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="SupplierRatingOID" ColumnName="SupplierRatingOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierRatings">
+      <EntityTypeMapping TypeName="PMSModel.SupplierRating">
+        <MappingFragment StoreEntitySet="SupplierRating">
+          <ScalarProperty Name="SupplierRatingOID" ColumnName="SupplierRatingOID" />
+          <ScalarProperty Name="RatingName" ColumnName="RatingName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchasingOrderDetails">
+      <EntityTypeMapping TypeName="PMSModel.PurchasingOrderDetail">
+        <MappingFragment StoreEntitySet="PurchasingOrderDetail">
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="SourceListOID" ColumnName="SourceListOID" />
+          <ScalarProperty Name="PurchasingOrderID" ColumnName="PurchasingOrderID" />
+          <ScalarProperty Name="PurchasingOrderDetailListOID" ColumnName="PurchasingOrderDetailListOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
