@@ -13,6 +13,7 @@ namespace PMSWin
     {
         public PurchasingOrderForm()
         {
+            //2019.10.02 GitHub Testing Commit
             InitializeComponent();
             pnlContent.BackColor = Color.FromArgb(42, 73, 93);  //深藍底
             panel1.BackColor = Color.FromArgb(250, 236, 209);    //淺黃底
