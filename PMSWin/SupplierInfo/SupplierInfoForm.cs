@@ -16,7 +16,7 @@ namespace PMSWin
 {
     public partial class SupplierInfoForm : BaseForm
     {
-        //註解
+        //註解123
         public SupplierInfoForm()
         {
             InitializeComponent();
