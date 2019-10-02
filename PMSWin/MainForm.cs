@@ -317,7 +317,7 @@ namespace PMSWin
             this.SupplierLoginAccount = null;
             this.Init();
         }
-
+	// TODO 待補首次登入
         public void SetLoginRole()
         {
             //登入角色權限按鈕
