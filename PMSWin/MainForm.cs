@@ -17,7 +17,7 @@ namespace PMSWin
     public partial class MainForm : Form
     {
         /// <summary>
-        /// 2019/10/03 呈穎 123
+        /// 2019/10/03 呈穎 123456
         /// 2019/09/22 v0.8 add Layout Color
         /// 2019/09/21 v0.7 add Account Func
         /// 2019/09/21 v0.6 add Part Func
