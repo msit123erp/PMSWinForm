@@ -16,7 +16,7 @@ namespace PMSWin
         {
             //switch (orderChangedCategory)
             //{
-           
+           　//陽菜ちゃん可愛い
             //}
         }
         public int updateData(string tablename, string tableDataUpdated, string whereIsIt, string update, string where)
